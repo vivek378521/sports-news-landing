@@ -14,6 +14,7 @@ export default function LandingPage({ articles }: LandingPageProps) {
       <Head>
         <title>EssentiallySports Latest News</title>
         <meta name="description" content="The latest news from EssentiallySports" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
 
@@ -25,7 +26,7 @@ export default function LandingPage({ articles }: LandingPageProps) {
           {articles.slice(0, Math.ceil(articles.length / 2)).map((article: any) => (
             <div className="article" key={article.guid}>
               {article['media:content']['$']['url'] && (
-                <div style={{ position: 'relative', width: '400px', maxWidth: '100%', height: '200px' }}>
+                <div className="image-container">
                   <Image
                     src={article['media:content']['$']['url']}
                     alt={article.title}
@@ -45,7 +46,7 @@ export default function LandingPage({ articles }: LandingPageProps) {
           {articles.slice(Math.ceil(articles.length / 2)).map((article: any) => (
             <div className="article" key={article.guid}>
               {article['media:content']['$']['url'] && (
-                <div style={{ position: 'relative', width: '400px', maxWidth: '100%', height: '200px' }}>
+                <div className="image-container">
                   <Image
                     src={article['media:content']['$']['url']}
                     alt={article.title}
@@ -73,15 +74,12 @@ export default function LandingPage({ articles }: LandingPageProps) {
         min-height: 100vh;
       }
       
-
-
-       h1 {
-         text-align: center;
-         font-size: 2.5rem;
-         margin-bottom: 2rem;
-         color: #1e293b;
-       }
-
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        margin-bottom: 1rem;
+      }
 
        .articles-container {
          display: flex;
@@ -105,6 +103,8 @@ export default function LandingPage({ articles }: LandingPageProps) {
         padding: 1.5rem;
         border-radius: 0.5rem;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+        flex-basis: calc(50% - 1rem);
       }
 
 
@@ -122,8 +122,6 @@ export default function LandingPage({ articles }: LandingPageProps) {
         text-shadow: 1px 1px 2px #333;
       }
       
-      
-
 
        p {
          font-size: 1.2rem;
@@ -137,6 +135,12 @@ export default function LandingPage({ articles }: LandingPageProps) {
          font-size: 1.2rem;
          color: #3182ce;
        }
+
+       @media (max-width: 768px) {
+        .article {
+          flex-basis: 100%;
+        }
+      }
      `}</style>
     </div>
   );
