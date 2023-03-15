@@ -25,7 +25,7 @@ export default function LandingPage({ articles }: LandingPageProps) {
           {articles.slice(0, Math.ceil(articles.length / 2)).map((article: any) => (
             <div className="article" key={article.guid}>
               {article['media:content']['$']['url'] && (
-                <div style={{ position: 'relative', width: '400px', maxWidth: '100%', height: '200px', left: 0 }}>
+                <div style={{ position: 'relative', width: '400px', maxWidth: '100%', height: '200px' }}>
                   <Image
                     src={article['media:content']['$']['url']}
                     alt={article.title}
@@ -45,7 +45,7 @@ export default function LandingPage({ articles }: LandingPageProps) {
           {articles.slice(Math.ceil(articles.length / 2)).map((article: any) => (
             <div className="article" key={article.guid}>
               {article['media:content']['$']['url'] && (
-                <div style={{ position: 'relative', width: '400px', maxWidth: '100%', height: '200px', left: 0 }}>
+                <div style={{ position: 'relative', width: '400px', maxWidth: '100%', height: '200px' }}>
                   <Image
                     src={article['media:content']['$']['url']}
                     alt={article.title}
@@ -67,9 +67,10 @@ export default function LandingPage({ articles }: LandingPageProps) {
       <style jsx>{`
        .container {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        max-width: 800px;
+        max-width: 100%;
         margin: 0 auto;
         padding: 2rem;
+        min-height: 100vh;
       }
       
 
